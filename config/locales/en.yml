@@ -31,3 +31,21 @@
 
 en:
   hello: "Hello world"
+
+  books: "Books"
+  author: "Author" 
+  memo: "Memo"  
+  picture: "Picture"  
+  title: "Title"
+
+  edit: "Edit"
+  new: "New book"
+  back_to_home: "Back to books"
+  edit_book: "Edit this book"
+  destroy_book: "Destroy this book"
+  show_book: "Show this book"
+
+  created_success: "Book was successfully updated."
+  updated_success: "Book was successfully updated."
+  destroyed_success: "Book was successfully destroyed."
+  

@@ -1,0 +1,19 @@
+ja:
+  books: 本
+
+  author: 著者  
+  memo: メモ  
+  picture: 写真  
+  title: タイトル  
+
+  edit: 編集
+  new: 新規作成
+  back_to_home: ホームに戻る
+  edit_book: この本を編集する
+  destroy_book: この本を削除する
+  show_book: この本を見る
+
+  created_success: 作成に成功しました
+  updated_success: 更新に成功しました
+  destroyed_success: 削除に成功しました
+

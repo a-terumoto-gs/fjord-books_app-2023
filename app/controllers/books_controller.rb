@@ -25,7 +25,7 @@ class BooksController < ApplicationController
 
     respond_to do |format|
       if @book.save
-        format.html { redirect_to book_url(@book), notice: t(:created_success)}
+        format.html { redirect_to book_url(@book), notice: t(:created_success) }
         format.json { render :show, status: :created, location: @book }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -52,7 +52,7 @@ class BooksController < ApplicationController
     @book.destroy
 
     respond_to do |format|
-      format.html { redirect_to books_url, notice: t(:destroyed_success)}
+      format.html { redirect_to books_url, notice: t(:destroyed_success) }
       format.json { head :no_content }
     end
   end

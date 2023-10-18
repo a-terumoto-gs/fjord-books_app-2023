@@ -1,20 +1,38 @@
-
-
 en:
-  books: "Books"
-  author: "Author" 
-  memo: "Memo"  
-  picture: "Picture"  
-  title: "Title"
+  activerecord:
+    models:
+      book: "Book"
 
-  edit: "Edit"
-  new: "New book"
-  back_to_home: "Back to books"
-  edit_book: "Edit this book"
-  destroy_book: "Destroy this book"
-  show_book: "Show this book"
+    attributes:
+      book: 
+          author: "Author" 
+          memo: "Memo"  
+          picture: "Picture"  
+          title: "Title"
 
-  created_success: "Book was successfully updated."
-  updated_success: "Book was successfully updated."
-  destroyed_success: "Book was successfully destroyed."
-  
+  views:
+    show: "View details"
+    back: "Back to Home"
+    new: "Create New"
+
+  books:
+    index:
+     books: "Book List"
+    
+    show:
+      edit: "Edit"
+      destroy: "Destroy"
+
+    edit:
+      edit: "Edit"
+
+    new:
+      new: "Create"
+
+  controllers:
+    created:
+      success: "Creation successful"
+    updated:
+      success: "Update successful"
+    destroyed:
+      success: "Deletion successful"

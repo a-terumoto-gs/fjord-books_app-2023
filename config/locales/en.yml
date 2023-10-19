@@ -10,6 +10,9 @@ en:
           picture: "Picture"  
           title: "Title"
 
+  edit: "Edit"
+  destroy: "Destroy"
+
   views:
     show: "View details"
     back: "Back to Home"
@@ -18,10 +21,6 @@ en:
   books:
     index:
      books: "Book List"
-    
-    show:
-      edit: "Edit"
-      destroy: "Destroy"
 
     edit:
       edit: "Edit"

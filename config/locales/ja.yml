@@ -10,6 +10,9 @@ ja:
         picture: 写真  
         title: タイトル  
 
+  edit: 編集する
+  destroy: 削除する
+
   views:
     show: 詳細を見る
     back: ホームに戻る
@@ -18,10 +21,6 @@ ja:
   books:
     index:
      books: 本一覧
-    
-    show:
-      edit: 編集する
-      destroy: 削除する
 
     edit:
       edit: 編集

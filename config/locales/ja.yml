@@ -10,13 +10,12 @@ ja:
         picture: 写真  
         title: タイトル  
 
-  edit: 編集する
-  destroy: 削除する
-
   views:
     show: 詳細を見る
     back: ホームに戻る
     new: 新規作成
+    edit: 編集する
+    destroy: 削除する
 
   books:
     index:

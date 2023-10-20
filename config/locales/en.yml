@@ -10,13 +10,12 @@ en:
           picture: "Picture"  
           title: "Title"
 
-  edit: "Edit"
-  destroy: "Destroy"
-
   views:
     show: "View details"
     back: "Back to Home"
     new: "Create New"
+    edit: "Edit"
+    destroy: "Destroy"
 
   books:
     index:

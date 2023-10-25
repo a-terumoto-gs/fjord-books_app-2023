@@ -1,0 +1,36 @@
+ja:
+  activerecord:
+    models:
+      book: 本
+
+    attributes:
+      book: 
+        author: 著者  
+        memo: メモ  
+        picture: 写真  
+        title: タイトル  
+
+  views:
+    show: 詳細を見る
+    back: ホームに戻る
+    new: 新規作成
+    edit: 編集する
+    destroy: 削除する
+
+  books:
+    index:
+     books: 本一覧
+
+    edit:
+      edit: 編集
+
+    new:
+      new: 新規作成
+
+  controllers:
+    created:
+      success: 作成に成功しました
+    updated:
+      success: 更新に成功しました
+    destroyed:
+      success: 削除に成功しました

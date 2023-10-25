@@ -9,3 +9,11 @@ en:
         memo: Memo
         picture: Picture
         title: Title
+
+  views:
+    pagination:
+      first: "first"
+      last: "last"
+      previous: "previous"
+      next: "next"
+      truncate: "..."

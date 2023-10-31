@@ -5,7 +5,12 @@ class RegistrationsController < Devise::RegistrationsController
       resource.postal_code = params[:user][:postal_code]
       resource.address = params[:user][:address]
       resource.profile = params[:user][:profile]
-      resource.save 
+      resource.save
     end
   end
+
+  def user_params
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :postal_code, :address, :profile)
+  end
+  
 end

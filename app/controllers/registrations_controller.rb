@@ -12,5 +12,10 @@ class RegistrationsController < Devise::RegistrationsController
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation, :postal_code, :address, :profile)
   end
-  
+
+  protected
+
+  def after_update_path_for(resource)
+    user_path(resource)
+  end
 end

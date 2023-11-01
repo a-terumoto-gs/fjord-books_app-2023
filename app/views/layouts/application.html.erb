@@ -23,13 +23,27 @@
     <li>
       <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
     </li>
+    <% unless current_page?(users_path) %>
+      <li>
+        <%= link_to "ユーザー一覧", users_path %>
+      </li>
+    <% end %>
+    <% unless current_page?(books_path) %>
+      <li>
+        <%= link_to "本の一覧", books_path %>
+      </li>
+    <% end %>
   <% else %>
-    <li>
-      <%= link_to "sign up", new_user_registration_path %>
-    </li>
-    <li>
-      <%= link_to "login", new_user_session_path %>
-    </li>
+    <% if current_page?(new_user_session_path) %>
+      <li>
+        <%= link_to "sign up", new_user_registration_path %>
+      </li>
+    <% end %>
+    <% if current_page?(new_user_registration_path) %>
+      <li>
+        <%= link_to "login", new_user_session_path %>
+      </li>
+    <% end %>
   <% end %>
 </header>
     <%= yield %>

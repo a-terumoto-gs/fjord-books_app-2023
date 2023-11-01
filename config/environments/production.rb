@@ -73,7 +73,18 @@ Rails.application.configure do
   config.i18n.fallbacks = true
 
   # Don't log any deprecations.
-  config.active_support.report_deprecations = false
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+  address: 'smtp.example.com',
+  port: 587,
+  domain: 'example.com',
+  name: 'your_username',
+  password: 'your_password',
+  authentication: 'plain',
+  enable_starttls_auto: true
+  }
+  config.action_mailer.perform_deliveries = true
+  config.active_support.report_deprecations = true
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new

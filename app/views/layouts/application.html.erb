@@ -21,32 +21,21 @@
   <header>
   <% if user_signed_in? %>
     <li>
-      <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+      <%= link_to t("views.common.logout"), destroy_user_session_path, method: :delete %>
     </li>
     <% unless current_page?(edit_user_registration_path) %>
       <li>
-      <%= link_to "アカウント情報を編集", edit_user_registration_path %>
+      <%= link_to t("views.users.edit"), edit_user_registration_path %>
       </li>
     <% end %>
     <% unless current_page?(users_path) %>
       <li>
-        <%= link_to "ユーザー一覧", users_path %>
+        <%= link_to t("views.users.index"), users_path %>
       </li>
     <% end %>
     <% unless current_page?(books_path) %>
       <li>
-        <%= link_to "本の一覧", books_path %>
-      </li>
-    <% end %>
-  <% else %>
-    <% if current_page?(new_user_session_path) %>
-      <li>
-        <%= link_to "sign up", new_user_registration_path %>
-      </li>
-    <% end %>
-    <% if current_page?(new_user_registration_path) %>
-      <li>
-        <%= link_to "login", new_user_session_path %>
+        <%= link_to t("views.books.index"), books_path %>
       </li>
     <% end %>
   <% end %>

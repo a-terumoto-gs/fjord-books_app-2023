@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   get 'users/index'
-  resources :tasks
   devise_for :users, controllers: {registrations: 'registrations'}
   resources :books
   resources :users
@@ -8,4 +7,6 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 end

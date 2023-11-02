@@ -14,10 +14,6 @@ ja:
       user:
         name: ユーザー名
         email: メールアドレス
-        encrypted_password: 暗号化パスワード
-        remember_created_at: 作成時刻
-        reset_password_sent_at: パスワードリセット送信時刻
-        reset_password_token: パスワードリセット用トークン
         postal_code: 郵便番号
         address: 住所
         profile: 自己紹介
@@ -58,10 +54,3 @@ ja:
 
     books:
       index: 本一覧
-
-#これどこで使ってる？
-  controllers:
-    common:
-      notice_create: 作成されました
-      notice_update: 更新されました
-      notice_destroy: 削除されました

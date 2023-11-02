@@ -20,23 +20,15 @@
 
   <header>
   <% if user_signed_in? %>
-    <li>
       <%= link_to t("views.common.logout"), destroy_user_session_path, method: :delete %>
-    </li>
     <% unless current_page?(edit_user_registration_path) %>
-      <li>
       <%= link_to t("views.users.edit"), edit_user_registration_path %>
-      </li>
     <% end %>
     <% unless current_page?(users_path) %>
-      <li>
         <%= link_to t("views.users.index"), users_path %>
-      </li>
     <% end %>
     <% unless current_page?(books_path) %>
-      <li>
         <%= link_to t("views.books.index"), books_path %>
-      </li>
     <% end %>
   <% end %>
 </header>

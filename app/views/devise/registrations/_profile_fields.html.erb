@@ -17,3 +17,8 @@
   <%= f.label :self_introduction %><br />
   <%= f.text_area :self_introduction %>
 </div>
+
+<div class="field">
+  <%= f.hidden_field :avatar, value: @user.avatar.signed_id if @user.avatar.attached? %><br />
+  <%= f.file_field :avatar, direct_upload: true %>
+</div>

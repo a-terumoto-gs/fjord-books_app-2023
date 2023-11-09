@@ -27,5 +27,6 @@ ja:
   views:
     enter_comment: コメントを入力してください
     get_comment: コメントする
+    no_comment: コメントがありません
       
 

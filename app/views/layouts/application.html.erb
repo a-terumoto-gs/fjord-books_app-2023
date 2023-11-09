@@ -11,6 +11,27 @@
   </head>
 
   <body class="<%= params[:action] %>">
+  <% if notice %>
+    <p class="alert alert-success"><%= notice %></p>
+  <% end %>
+  <% if alert %>
+    <p class="alert alert-danger"><%= alert %></p>
+  <% end %>
+
+  <header>
+  <% if user_signed_in? %>
+      <%= link_to t("views.common.logout"), destroy_user_session_path, method: :delete %>
+    <% unless current_page?(edit_user_registration_path) %>
+      <%= link_to t("views.users.edit"), edit_user_registration_path %>
+    <% end %>
+    <% unless current_page?(users_path) %>
+        <%= link_to t("views.users.index"), users_path %>
+    <% end %>
+    <% unless current_page?(books_path) %>
+        <%= link_to t("views.books.index"), books_path %>
+    <% end %>
+  <% end %>
+</header>
     <%= yield %>
   </body>
 </html>

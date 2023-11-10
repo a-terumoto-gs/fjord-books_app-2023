@@ -4,6 +4,8 @@
     <%= report.user %>
   </p>
 
+  <p class="timestamp"><%= report.created_at.strftime("%Y-%m-%d %H:%M:%S") %></p>
+
   <p>
     <strong><%= Report.human_attribute_name(:title) %>:</strong>
     <%= report.title %>

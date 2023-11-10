@@ -29,5 +29,6 @@ ja:
     enter_comment: コメントを入力してください
     get_comment: コメントする
     no_comment: コメントがありません
+    no_permission: 権限がありません
       
 

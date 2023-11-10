@@ -2,7 +2,7 @@
 
 class ReportsController < ApplicationController
   before_action :set_report, only: %i[show edit update destroy]
-  before_action :authorize_user, only: [:edit, :update, :destroy]
+  before_action :authorize_user, only: %i[edit update destroy]
 
   def index
     @reports = Report.order(:id).page(params[:page])
@@ -59,10 +59,10 @@ class ReportsController < ApplicationController
   end
 
   def authorize_user
-    unless @report.user == current_user
-      flash[:alert] = "権限がありません"
-      redirect_to root_path
-    end
+    return if @report.user == current_user
+
+    flash[:alert] = t('views.no_permission')
+    redirect_to root_path
   end
 
   def report_params

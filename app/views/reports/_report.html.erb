@@ -19,4 +19,12 @@
     <%= l report.created_on %>
   </p>
 
+  <% if @report && @report.mentioning_reports.any? %>
+    <p>この日報は以下から言及されました。</p>
+    <ul>
+      <% @report.mentioning_reports.each do |mentioning_report| %>
+        <li><%= link_to mentioning_report.title, mentioning_report %></li>
+      <% end %>
+    </ul>
+  <% end %>
 </div>

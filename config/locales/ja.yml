@@ -202,6 +202,8 @@ ja:
       previous: '‹ 前'
       next: '次 ›'
       truncate: '…'
+    mention:
+      report_mentioned: この日報は次の日報から言及されています
   controllers:
     common:
       notice_create: "%{name}が作成されました。"

@@ -22,9 +22,7 @@ class ReportsController < ApplicationController
     @report = current_user.reports.new(report_params)
 
     if @report.save
-      contents = @report.content.scan(%r{http://localhost:3000/reports/(\d{1,})})
-      set_mention(contents)
-      
+      give_mentions
       redirect_to @report, notice: t('controllers.common.notice_create', name: Report.model_name.human)
     else
       render :new, status: :unprocessable_entity
@@ -33,9 +31,8 @@ class ReportsController < ApplicationController
 
   def update
     if @report.update(report_params)
-      Mention.where(mentioned_report_id: @report.id).each(&:destroy)
-      contents = @report.content.scan(%r{http://localhost:3000/reports/(\d{1,})})
-      set_mention(contents)
+      Mention.where(mentioned_report_id: @report.id).find_each(&:destroy)
+      give_mentions
       redirect_to @report, notice: t('controllers.common.notice_update', name: Report.model_name.human)
     else
       render :edit, status: :unprocessable_entity
@@ -58,9 +55,12 @@ class ReportsController < ApplicationController
     params.require(:report).permit(:title, :content)
   end
 
-  def set_mention(contents)
+  def give_mentions
+    contents = @report.content.scan(%r{http://localhost:3000/reports/(\d{1,})})
+    return if contents.empty?
+
     contents.each do |content|
       Mention.create(mentioned_report_id: @report.id, mentioning_report_id: content[0])
-    end unless contents.empty?
+    end
   end
 end

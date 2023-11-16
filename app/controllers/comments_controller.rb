@@ -6,9 +6,9 @@ class CommentsController < ApplicationController
     @comment.user = current_user
 
     if @comment.save
-      redirect_back(fallback_location: root_path, notice: t('controllers.common.notice_preserve', name: Comment.model_name.human))
+      redirect_to report_path(@comment.commentable), notice: t('controllers.common.notice_preserve', name: Comment.model_name.human)
     else
-      redirect_back(fallback_location: root_path, alert: t('views.common.validation_error', name: Comment.model_name.human, errors: Comment.model_name.human))
+      redirect_to report_path(@comment.commentable), alert: t('views.common.validation_error', name: Comment.model_name.human)
     end
   end
 
@@ -17,9 +17,9 @@ class CommentsController < ApplicationController
 
     if current_user == @comment.user
       @comment.destroy
-      redirect_back(fallback_location: root_path, notice: t('controllers.common.notice_destroy', name: Comment.model_name.human))
+      redirect_to report_path(@comment.commentable), notice: t('controllers.common.notice_destroy', name: Comment.model_name.human)
     else
-      redirect_back(fallback_location: root_path, alert: t('views.common.validation_error', name: Comment.model_name.human))
+      redirect_to report_path(@comment.commentable), alert: t('views.common.validation_error', name: Comment.model_name.human)
     end
   end
 

@@ -1,7 +1,7 @@
 <div id="<%= dom_id report %>">
   <p>
     <strong><%= Report.human_attribute_name(:user) %>:</strong>
-    <%= report.user %>
+    <%= report.user.name.presence || report.user.email %>
   </p>
 
   <p class="timestamp"><%= report.created_at.strftime("%Y-%m-%d %H:%M:%S") %></p>

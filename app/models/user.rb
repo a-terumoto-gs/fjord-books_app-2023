@@ -8,7 +8,4 @@ class User < ApplicationRecord
     attachable.variant :thumb, resize_to_limit: [150, 150]
   end
 
-  def to_s
-    name.presence || email
-  end
 end

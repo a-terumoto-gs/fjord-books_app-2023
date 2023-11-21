@@ -137,6 +137,7 @@ h3 {
   border-radius: var(--global-br);
   height: 2em;
   padding: 0 .75em;
+  margin-bottom: 10px;
 }
 
 .button_to button[type="submit"]:hover,

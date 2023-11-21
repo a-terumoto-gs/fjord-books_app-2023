@@ -1,0 +1,12 @@
+<%= form_with(model: Comment.new, url: comments_path, local: true, required: true) do |form| %>
+  <%= form.hidden_field :commentable_type, value: commentable.class.to_s %>
+  <%= form.hidden_field :commentable_id, value: commentable.id %>
+
+  <div class="field">
+    <%= form.text_area :content, placeholder: t('views.enter_comment'), required: true %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit t('views.get_comment') %>
+  </div>
+<% end %>

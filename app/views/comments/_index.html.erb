@@ -1,0 +1,15 @@
+<% if comments.present? %>
+  <% comments.each do |comment| %>
+    <div class="comment">
+      <strong><%= comment.user.name.presence || comment.user.email %></strong>
+      <p><%= comment.content %></p>
+      <p class="timestamp"><%= I18n.l(comment.created_at, format: :default) %></p>
+
+      <% if current_user == comment.user %>
+        <%= button_to t('views.common.destroy', name: Comment.model_name.human.downcase), comment, method: :delete %>
+      <% end %>
+    </div>
+  <% end %>
+<% else %>
+  <p><%= t('views.no_comment') %></p>
+<% end %>

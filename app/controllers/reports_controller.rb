@@ -30,8 +30,8 @@ class ReportsController < ApplicationController
         raise ActiveRecord::Rollback
       end
     end
-  rescue StandardError => e
-    flash[:alert] =  t('views.common.error') 
+  rescue StandardError => _e
+    flash[:alert] = t('views.common.error')
     render :new, status: :unprocessable_entity
   end
 
@@ -46,8 +46,8 @@ class ReportsController < ApplicationController
         raise ActiveRecord::Rollback
       end
     end
-  rescue StandardError => e
-    flash[:alert] =  t('views.common.error') 
+  rescue StandardError => _e
+    flash[:alert] = t('views.common.error')
     render :edit, status: :unprocessable_entity
   end
 

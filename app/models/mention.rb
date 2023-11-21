@@ -11,7 +11,7 @@ class Mention < ApplicationRecord
     return if contents.empty?
 
     contents.each do |content|
-      Mention.create(mentioned_report_id: @report.id, mentioning_report_id: content[0])
+      Mention.create!(mentioned_report_id: @report.id, mentioning_report_id: content[0])
     end
   end
 end

@@ -3,9 +3,12 @@
 # This model initially had no columns defined. If you add columns to the
 # model remove the "{}" from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
-#
-one: {}
-# column: value
-#
-two: {}
-# column: value
+
+alice:
+  email: aaa@example.com
+  name: Alice
+  password: <%= BCrypt::Password.create('password_a') %>
+
+bob: 
+  email: bbb@example.com
+  password: <%= BCrypt::Password.create('password_b') %>

@@ -3,7 +3,13 @@
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  fixtures :users
+
+  test 'name_or_email' do
+    user = users(:alice)
+    assert_equal 'alice', user.name_or_email
+
+    user = users(:bob)
+    assert_equal 'bbb@example.com', user.name_or_email
+  end
 end

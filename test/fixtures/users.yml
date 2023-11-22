@@ -7,8 +7,7 @@
 alice:
   email: aaa@example.com
   name: Alice
-  encrypted_password: <%= BCrypt::Password.create('password_a') %>
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
 
 bob: 
   email: bbb@example.com
-  encrypted_password: <%= BCrypt::Password.create('password_b') %>

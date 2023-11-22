@@ -7,8 +7,8 @@
 alice:
   email: aaa@example.com
   name: Alice
-  password: <%= BCrypt::Password.create('password_a') %>
+  encrypted_password: <%= BCrypt::Password.create('password_a') %>
 
 bob: 
   email: bbb@example.com
-  password: <%= BCrypt::Password.create('password_b') %>
+  encrypted_password: <%= BCrypt::Password.create('password_b') %>

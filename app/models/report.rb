@@ -22,11 +22,11 @@ class Report < ApplicationRecord
   end
 
   def create_mentions
-    contents = self.content.scan(%r{http://localhost:3000/reports/(\d{1,})})
+    contents = content.scan(%r{http://localhost:3000/reports/(\d{1,})})
     return if contents.empty?
 
     contents.each do |content|
-      Mention.create!(mentioned_report_id: self.id, mentioning_report_id: content[0])
+      Mention.create!(mentioned_report_id: id, mentioning_report_id: content[0])
     end
   end
 end

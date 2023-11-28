@@ -25,7 +25,7 @@ class ReportsTest < ApplicationSystemTestCase
     click_on '日報の新規作成'
 
     fill_in 'タイトル', with: 'わかった！'
-    fill_in '内容', with: 'ずっと苦戦してたところが解決できた'    
+    fill_in '内容', with: 'ずっと苦戦してたところが解決できた'
     click_on '登録する'
 
     assert_selector 'h1', text: '日報の詳細'

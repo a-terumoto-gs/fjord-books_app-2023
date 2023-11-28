@@ -34,5 +34,4 @@ class ReportTest < ActiveSupport::TestCase
     @report.mentioning_reports.reload
     assert_equal [@another_report], @report.mentioning_reports.to_a
   end
-
 end

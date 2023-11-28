@@ -23,7 +23,7 @@ class ReportsController < ApplicationController
       @report = current_user.reports.new(report_params)
 
       if @report.save
-        create_mentions
+        @report.create_mentions
         redirect_to @report, notice: t('controllers.common.notice_create', name: Report.model_name.human)
       else
         render :new, status: :unprocessable_entity
@@ -39,7 +39,7 @@ class ReportsController < ApplicationController
     ActiveRecord::Base.transaction do
       if @report.update(report_params)
         Mention.where(mentioned_report_id: @report.id).find_each(&:destroy)
-        create_mentions
+        @report.create_mentions
         redirect_to @report, notice: t('controllers.common.notice_update', name: Report.model_name.human)
       else
         render :edit, status: :unprocessable_entity

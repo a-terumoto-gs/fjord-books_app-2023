@@ -30,8 +30,8 @@ class ReportsController < ApplicationController
         raise ActiveRecord::Rollback
       end
     end
-  rescue StandardError => _e
-    flash[:alert] = t('views.common.error')
+  rescue ActiveRecord::RecordInvalid => e
+    Rails.logger.error("エラーが発生しました: #{e.message}")
     render :new, status: :unprocessable_entity
   end
 
@@ -46,7 +46,8 @@ class ReportsController < ApplicationController
         raise ActiveRecord::Rollback
       end
     end
-  rescue StandardError => _e
+  rescue ActiveRecord::RecordInvalid => e
+    Rails.logger.error("エラーが発生しました: #{e.message}")
     flash[:alert] = t('views.common.error')
     render :edit, status: :unprocessable_entity
   end

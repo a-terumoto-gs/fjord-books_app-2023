@@ -27,7 +27,6 @@ class ReportsController < ApplicationController
         redirect_to @report, notice: t('controllers.common.notice_create', name: Report.model_name.human)
       else
         render :new, status: :unprocessable_entity
-        raise ActiveRecord::Rollback
       end
     end
   rescue ActiveRecord::RecordInvalid => e
@@ -43,7 +42,6 @@ class ReportsController < ApplicationController
         redirect_to @report, notice: t('controllers.common.notice_update', name: Report.model_name.human)
       else
         render :edit, status: :unprocessable_entity
-        raise ActiveRecord::Rollback
       end
     end
   rescue ActiveRecord::RecordInvalid => e

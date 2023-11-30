@@ -21,12 +21,13 @@ class Report < ApplicationRecord
     created_at.to_date
   end
 
-  def create_mentions
-    contents = content.scan(%r{http://localhost:3000/reports/(\d{1,})})
-    return if contents.empty?
+  def create_mentions!
+    fetched_mention_urls = content.scan(%r{http://localhost:3000/reports/(\d{1,})})
+    mention_urls = fetched_mention_urls.uniq
+    return if mention_urls.empty?
 
-    contents.each do |content|
-      Mention.create!(mentioned_report_id: id, mentioning_report_id: content[0])
+    mention_urls.each do |mention_url|
+      Mention.create!(mentioning_report_id: id, mentioned_report_id: mention_url[0])
     end
   end
 end

@@ -19,11 +19,11 @@
     <%= l report.created_on %>
   </p>
 
-  <% if @report && @report.mentioned_reports.any? %>
+  <% if @report && @report.mentioning_reports.any? %>
     <p><%= t('views.mention.report_mentioned') %></p>
     <ul>
-      <% @report.mentioned_reports.each do |mentioned_report| %>
-        <li><%= link_to mentioned_report.title, mentioned_report %></li>
+      <% @report.mentioning_reports.each do |mentioning_report| %>
+        <li><%= link_to mentioning_report.title, mentioning_report %></li>
       <% end %>
     </ul>
   <% end %>

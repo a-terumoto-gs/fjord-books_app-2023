@@ -19,21 +19,35 @@ class ReportsController < ApplicationController
   def edit; end
 
   def create
-    @report = current_user.reports.new(report_params)
+    ActiveRecord::Base.transaction do
+      @report = current_user.reports.new(report_params)
 
-    if @report.save
-      redirect_to @report, notice: t('controllers.common.notice_create', name: Report.model_name.human)
-    else
-      render :new, status: :unprocessable_entity
+      if @report.save
+        @report.create_mentions!
+        redirect_to @report, notice: t('controllers.common.notice_create', name: Report.model_name.human)
+      else
+        render :new, status: :unprocessable_entity
+      end
     end
+  rescue ActiveRecord::RecordInvalid => e
+    Rails.logger.error("エラーが発生しました: #{e.message}")
+    render :new, status: :unprocessable_entity
   end
 
   def update
-    if @report.update(report_params)
-      redirect_to @report, notice: t('controllers.common.notice_update', name: Report.model_name.human)
-    else
-      render :edit, status: :unprocessable_entity
+    ActiveRecord::Base.transaction do
+      if @report.update(report_params)
+        Mention.where(mentioning_report_id: @report.id).find_each(&:destroy)
+        @report.create_mentions!
+        redirect_to @report, notice: t('controllers.common.notice_update', name: Report.model_name.human)
+      else
+        render :edit, status: :unprocessable_entity
+      end
     end
+  rescue ActiveRecord::RecordInvalid => e
+    Rails.logger.error("エラーが発生しました: #{e.message}")
+    flash[:alert] = t('views.common.error')
+    render :edit, status: :unprocessable_entity
   end
 
   def destroy

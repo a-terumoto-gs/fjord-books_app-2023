@@ -16,7 +16,7 @@ class ReportTest < ActiveSupport::TestCase
   end
 
   test 'created_on' do
-    assert_equal Time.now.to_date, @report.created_on
+    assert_equal Time.current.to_date, @report.created_on
   end
 
   test 'save_mentions' do

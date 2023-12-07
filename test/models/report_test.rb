@@ -16,22 +16,19 @@ class ReportTest < ActiveSupport::TestCase
 
   test 'created_on' do
     @report = reports(:one)
-    assert_equal @report.created_on, @report.created_at.to_date
+    assert_equal @report.created_at.to_date, @report.created_on
   end
 
   test 'save_mentions' do
-    # 準備
     @one_report = reports(:one)
     @another_report = reports(:two)
     @report = @user.reports.build(title: 'mentioning', content: "http://localhost:3000/reports/#{@one_report.id}")
 
-    # セットされてるか
     @report.save!
-    assert_equal [@one_report], @report.mentioning_reports.to_a
+    assert_equal @report.mentioning_reports.to_a, [@one_report]
 
-    # 内容変更したらメンションも変更されるか
     @report.update!(content: "http://localhost:3000/reports/#{@another_report.id}")
     @report.mentioning_reports.reload
-    assert_equal [@another_report], @report.mentioning_reports.to_a
+    assert_equal @report.mentioning_reports.to_a, [@another_report]
   end
 end

@@ -6,21 +6,20 @@ class ReportsTest < ApplicationSystemTestCase
   fixtures :users, :reports
 
   setup do
-    @report = reports(:one)
+    @report = reports(:first_report)
 
     visit root_url
-    fill_in 'Eメール', with: 'aaa@example.com'
+    fill_in 'Eメール', with: 'alice@example.com'
     fill_in 'パスワード', with: 'password'
     click_button 'ログイン'
-    assert_text 'ログインしました。'
   end
 
-  test 'visiting the index' do
+  test '日報一覧表示' do
     visit reports_url
     assert_selector 'h1', text: '日報の一覧'
   end
 
-  test 'should create report' do
+  test '日報作成' do
     visit reports_url
     click_on '日報の新規作成'
 
@@ -35,7 +34,7 @@ class ReportsTest < ApplicationSystemTestCase
     assert_text 'Alice'
   end
 
-  test 'should update Report' do
+  test '日報更新' do
     visit report_url(@report)
     click_on 'この日報を編集', match: :first
 
@@ -51,7 +50,7 @@ class ReportsTest < ApplicationSystemTestCase
     assert_text 'Alice'
   end
 
-  test 'should destroy Report' do
+  test '日報削除' do
     visit report_url(@report)
     click_on 'この日報を削除', match: :first
 

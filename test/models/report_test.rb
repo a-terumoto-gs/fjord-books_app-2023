@@ -10,25 +10,25 @@ class ReportTest < ActiveSupport::TestCase
   end
 
   test 'editable?' do
-    @report = reports(:one)
+    @report = reports(:first_report)
     assert @report.editable?(@user)
   end
 
   test 'created_on' do
-    @report = reports(:one)
-    assert_equal @report.created_at.to_date, @report.created_on
+    @report = reports(:first_report)
+    assert_equal Time.now.to_date, @report.created_on
   end
 
   test 'save_mentions' do
-    @one_report = reports(:one)
-    @another_report = reports(:two)
-    @report = @user.reports.build(title: 'mentioning', content: "http://localhost:3000/reports/#{@one_report.id}")
+    @first_report = reports(:first_report)
+    @second_report = reports(:second_report)
+    @report = @user.reports.build(title: 'mentioning', content: "http://localhost:3000/reports/#{@first_report.id}")
 
     @report.save!
-    assert_equal @report.mentioning_reports.to_a, [@one_report]
+    assert_equal @report.mentioning_reports.to_a, [@first_report]
 
-    @report.update!(content: "http://localhost:3000/reports/#{@another_report.id}")
+    @report.update!(content: "http://localhost:3000/reports/#{@second_report.id}")
     @report.mentioning_reports.reload
-    assert_equal @report.mentioning_reports.to_a, [@another_report]
+    assert_equal @report.mentioning_reports.to_a, [@second_report]
   end
 end

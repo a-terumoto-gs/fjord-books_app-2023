@@ -1,11 +1,11 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+first_report:
   user: alice
   title: 初めて日報を書きます
   content: 今日から日報書いてみます。よろしくお願いします。
 
-two:
+second_report:
   user: bob
   title: よろしくお願いします
   content: こういったサービスを使うのははじめてです

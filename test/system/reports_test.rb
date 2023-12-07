@@ -12,6 +12,7 @@ class ReportsTest < ApplicationSystemTestCase
     fill_in 'Eメール', with: 'alice@example.com'
     fill_in 'パスワード', with: 'password'
     click_button 'ログイン'
+    find('h1', text: '本の一覧')
   end
 
   test '日報一覧表示' do
@@ -32,6 +33,7 @@ class ReportsTest < ApplicationSystemTestCase
     assert_text 'わかった！'
     assert_text 'ずっと苦戦してたところが解決できた'
     assert_text 'Alice'
+    assert Report.find_by(id: @report.id)
   end
 
   test '日報更新' do
@@ -48,6 +50,7 @@ class ReportsTest < ApplicationSystemTestCase
     assert_text 'やっぱりわかってなかった'
     assert_text '解決できてなかった'
     assert_text 'Alice'
+    assert Report.find_by(id: @report.id)
   end
 
   test '日報削除' do
